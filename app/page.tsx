@@ -1,27 +1,27 @@
-import { Header } from "@/components/sections/header"
-import { Hero } from "@/components/sections/hero"
-import { About } from "@/components/sections/about"
-import { Differentials } from "@/components/sections/differentials"
-import { Products } from "@/components/sections/products"
-import { ForWho } from "@/components/sections/for-who"
-import { Commercial } from "@/components/sections/commercial"
-import { Contact } from "@/components/sections/contact"
-import { Footer } from "@/components/sections/footer"
+import { Navbar } from "@/components/navbar";
+import { HeroSection } from "@/components/hero-section";
+import { ProductsSection } from "@/components/products-section";
+import { ValuesSection } from "@/components/values-section";
+import { StorySection } from "@/components/story-section";
+import { ProcessSection } from "@/components/process-section";
+import { RecipesSection } from "@/components/recipes-section";
+import { ContactSection } from "@/components/contact-section";
+import { NewsletterSection } from "@/components/newsletter-section";
+import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Differentials />
-        <Products />
-        <ForWho />
-        <Commercial />
-        <Contact />
-      </main>
+    <main>
+      <Navbar />
+      <HeroSection />
+      <ProductsSection />
+      <ValuesSection />
+      <StorySection />
+      <ProcessSection />
+      <RecipesSection />
+      <ContactSection />
+      <NewsletterSection />
       <Footer />
-    </>
-  )
+    </main>
+  );
 }
