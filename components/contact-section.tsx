@@ -26,7 +26,7 @@ const locations = [
     subtitle: "MOTOBOY PRÓPRIO, COMBINAR HORÁRIO",
   },
   {
-    icon: Phone,
+    icon: Mail,
     title: "contato@lacucina.com.br",
     subtitle: "RESPONDEMOS EM ATÉ 1 DIA ÚTIL",
   },
