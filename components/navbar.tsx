@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Mail } from "lucide-react";
+import { Menu, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+
+const WHATSAPP_NUMBER = "5541995025425";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 const navLinks = [
   { href: "#inicio", label: "Início" },
@@ -48,8 +51,13 @@ export function Navbar() {
           <button className="p-2 text-muted-foreground hover:text-foreground transition-colors">
             <Mail className="w-5 h-5" />
           </button>
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
-            Comprar
+          <Button
+            asChild
+            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6"
+          >
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              Comprar
+            </a>
           </Button>
         </div>
 
@@ -72,8 +80,13 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full mt-4">
-                Comprar
+              <Button
+                asChild
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full mt-4"
+              >
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                  Comprar
+                </a>
               </Button>
             </div>
           </SheetContent>

@@ -3,6 +3,9 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+const WHATSAPP_NUMBER = "5541995025425";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+
 export function HeroSection() {
   return (
     <section
@@ -47,7 +50,9 @@ export function HeroSection() {
               asChild
               className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-base"
             >
-              <Link href="#molhos">Comprar agora</Link>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                Comprar agora
+              </a>
             </Button>
             <Button
               asChild

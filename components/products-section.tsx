@@ -1,78 +1,52 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+
+const WHATSAPP_NUMBER = "5541995025425";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 const products = [
   {
     id: 1,
     category: "CLÁSSICO",
-    name: "Pomodoro Clássico",
+    name: "Tomate + Tomate",
     description: "O essencial do nosso fogão",
     badge: "MAIS VENDIDO",
     badgeColor: "bg-primary",
-    image: "/images/pomodoro-classico.jpg",
+    image: "/images/tomate-tomate.jpeg",
     ingredients: [
       { name: "Tomate italiano pelado", percentage: "82%" },
       { name: "Azeite extra-virgem", percentage: "" },
       { name: "Alho fresco", percentage: "" },
     ],
-    sizes: [
-      { label: "200G", price: 18.9 },
-      { label: "350G", price: 28.9 },
-      { label: "500G", price: 38.9 },
-    ],
+    size: "300G",
+    price: 28.9,
   },
   {
     id: 2,
-    category: "APIMENTADO",
-    name: "Arrabbiata",
-    description: "Para quem gosta do calor da vida",
-    badge: "NOVO",
-    badgeColor: "bg-primary",
-    image: "/images/arrabbiata.jpg",
-    ingredients: [
-      { name: "Tomate San Marzano pelado", percentage: "80%" },
-      { name: "Azeite extra-virgem", percentage: "" },
-      { name: "Alho fresco", percentage: "" },
-    ],
-    sizes: [
-      { label: "200G", price: 19.9 },
-      { label: "350G", price: 29.9 },
-      { label: "500G", price: 39.9 },
-    ],
-  },
-  {
-    id: 3,
     category: "COM MANJERICÃO",
-    name: "Pomodoro & Manjericão",
+    name: "Tomate + Manjericão",
     description: "Verão numa colherada",
     badge: null,
     badgeColor: "",
-    image: "/images/pomodoro-manjericao.jpg",
+    image: "/images/tomate-manjericao.jpeg",
     ingredients: [
       { name: "Tomate italiano maduro", percentage: "78%" },
       { name: "Manjericão fresco", percentage: "8%" },
       { name: "Azeite extra-virgem", percentage: "" },
     ],
-    sizes: [
-      { label: "200G", price: 19.9 },
-      { label: "350G", price: 29.9 },
-      { label: "500G", price: 39.9 },
-    ],
+    size: "300G",
+    price: 29.9,
   },
 ];
 
 export function ProductsSection() {
-  const [selectedSizes, setSelectedSizes] = useState<Record<number, number>>({
-    1: 1,
-    2: 1,
-    3: 1,
-  });
-
-  const handleSizeChange = (productId: number, sizeIndex: number) => {
-    setSelectedSizes((prev) => ({ ...prev, [productId]: sizeIndex }));
+  const handleBuyClick = (productName: string) => {
+    const message = encodeURIComponent(
+      `Olá! Gostaria de fazer um pedido do molho ${productName}.`
+    );
+    window.open(`${WHATSAPP_URL}?text=${message}`, "_blank");
   };
 
   return (
@@ -92,7 +66,7 @@ export function ProductsSection() {
         </div>
 
         {/* Products Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {products.map((product) => (
             <div key={product.id} className="group">
               {/* Image */}
@@ -135,33 +109,23 @@ export function ProductsSection() {
                   ))}
                 </div>
 
-                {/* Size Selector */}
-                <div className="flex gap-2 mb-4">
-                  {product.sizes.map((size, idx) => (
-                    <button
-                      key={size.label}
-                      onClick={() => handleSizeChange(product.id, idx)}
-                      className={`flex-1 py-2 px-4 rounded-full text-sm transition-colors ${
-                        selectedSizes[product.id] === idx
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-muted text-muted-foreground hover:bg-muted/80"
-                      }`}
-                    >
-                      {size.label}
-                    </button>
-                  ))}
+                {/* Size Badge */}
+                <div className="mb-4">
+                  <span className="inline-block bg-primary text-primary-foreground py-2 px-6 rounded-full text-sm">
+                    {product.size}
+                  </span>
                 </div>
 
                 {/* Price & Add */}
                 <div className="flex items-center justify-between">
                   <span className="font-serif text-xl text-primary">
-                    R${" "}
-                    {product.sizes[selectedSizes[product.id]].price
-                      .toFixed(2)
-                      .replace(".", ",")}
+                    R$ {product.price.toFixed(2).replace(".", ",")}
                   </span>
-                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
-                    Adicionar
+                  <Button
+                    onClick={() => handleBuyClick(product.name)}
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6"
+                  >
+                    Comprar
                   </Button>
                 </div>
               </div>

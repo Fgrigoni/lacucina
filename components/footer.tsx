@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram, Facebook, MessageCircle } from "lucide-react";
+
+const WHATSAPP_NUMBER = "5541995025425";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 const navigation = [
   { label: "Início", href: "#inicio" },
@@ -37,18 +40,30 @@ export function Footer() {
             {/* Social */}
             <div className="flex items-center gap-4">
               <a
-                href="#"
+                href="https://instagram.com/lacucina"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/60 hover:text-white transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://facebook.com/lacucina"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/60 hover:text-white transition-colors"
               >
                 <Facebook className="w-5 h-5" />
               </a>
-              <span className="text-sm text-white/60">WhatsApp</span>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-white/60 hover:text-white transition-colors"
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span className="text-sm">WhatsApp</span>
+              </a>
             </div>
           </div>
 

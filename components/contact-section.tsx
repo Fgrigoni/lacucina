@@ -4,7 +4,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MessageCircle, MapPin, Phone, Mail } from "lucide-react";
+import { MessageCircle, MapPin, Mail } from "lucide-react";
+
+const WHATSAPP_NUMBER = "5541995025425";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 const locations = [
   {
@@ -123,8 +126,13 @@ export function ContactSection() {
                   <p className="text-sm text-muted-foreground mb-4">
                     Pedidos e dúvidas rápidas
                   </p>
-                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
-                    Falar agora
+                  <Button
+                    asChild
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6"
+                  >
+                    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                      Falar agora
+                    </a>
                   </Button>
                 </div>
               </div>
